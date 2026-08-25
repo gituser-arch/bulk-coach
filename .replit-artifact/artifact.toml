@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "Bulk Coach"
+description = "A private, local-first mobile companion for personal bulking: log meal portions, water intake, bodyweight, and weekly progress without calories or macro grams."
+version = "1.0.0"
+id = "artifacts/bulk-coach"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 22402
+
+[services.development]
+run = "pnpm --filter @workspace/bulk-coach run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/bulk-coach", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/bulk-coach", "run", "serve" ]
+
+[services.env]
+PORT = "22402"
+BASE_PATH = "/"
